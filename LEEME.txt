@@ -1,0 +1,56 @@
+Gabriel De Lamo Dutra 45929352P
+
+-------------PARTES OBLIGATORIAS-------------
+
+-SERVER
+Para la parte obligatoria se ha tenido que remodelar un poco el backend respecto a la práctica 1 , 
+se utilizan funciones propias de mongoDB para almacenar los datos, pero en general el funcionamiento 
+es el mismo, admeás se le ha implementado CORS para poder recibir las peticiones .
+
+En la práctica 1, el token se enviaba en la cabecera x-access-token para comprobar el login, esto no 
+ha cambiado.En la práctica se indica que se debe utilizar la cabecera Authorization, pero debido a que 
+no funcionaba, se ha decidido dejar como estaba en el server (x-access-token).Por otro lado , en el apartado
+del cliente se han dejado comentadas las implementaciones, que aunque no funcionales, dan ejemplo de lo 
+que he intentado implementar (sin demasíado éxito) para enviar el token en la cabecera Authorization.
+
+-CLIENT
+Para la aplicación cliente se ha utilizado un proyecto de vue-cli mediante single files componente
+Las diferentes partes obligatorias que se pedian se han implementado de la siguiente manera:
+    -#Login/Logout
+    Siguiendo el video explicativo de una manera de utilizar VUEX para la gestión de estado centralizado
+    se ha decidido implementar prácticamente igual, pero a diferencia del video, dado que en mi esquema 
+    inicial de la base de datos solo se entiende que los usuarios tienen email-password, he decidido utilizar 
+    otra variable local para almacenar el correo, lo que facilita el uso al tener dos variables diferenciadas,
+    además de la variable local que almacena el token.
+     Se mantiene la sesión iniciada mediante el estado centralizado conservando ambas variables en local
+    -#Listado 
+    para mostrar los detalles sin cambiar de página se utiliza el método setActiveProveedor que coloca
+    en la variable proveedor el objeto que usamos.
+    Se seleccionan los items y se puede acceder a la opción de Editar o Borrar, Borrar no borra en clientSide, pide un refresh
+
+    #Creación de items
+    Para la creación de ITEMS se utiliza un formulario donde se introducen los datos para posteriormente
+    crear un objeto y pasarselo al service que lleva a cabo la petición al server, una vez creado, se nos 
+    da la opción de seguir creando o volver al menú para ver el proveedor creado.
+
+
+
+-------------PARTES OPTATIVAS-------------
+Se ha implementado:
+    -   VueCli + SFC (0.5)
+    -   Bootstrap-Vue (para jumbotrons , barra de navegación con dropdowns e iconos con fontawesome) (1)
+    -   Edición de datos (Botón editar con su pertinente formulario) (1)
+    -   VUEX (para mantener al usuario logeado en la aplicación mediante localStorage) (1)
+    -   Vue Router , para las diferentes direcciones usando routerLink (1.5) 
+
+-------------PARA ARRANCARLO-------------
+en la carpeta client
+npm i 
+npm run serve
+
+en la carpeta server
+npm i 
+npm run dev
+
+(arrancar MongoDB)
+en otra terminal : mongod (debería de crear la base de datos kiyan_bd)
